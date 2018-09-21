@@ -32,8 +32,8 @@ export function fetchMovieByTitle(search) {
             OMDBAPI.getMovieByTitle(search).then(response => {
                 if(response.data.Response === "True"){
                     dispatch({
-                        type: types.FETCH_MOVIE,
-                        movie:response.data
+                        type: types.FETCH_MOVIE_LIST,
+                        moviesList:response.data.Search
                     });
                 }else{
                     dispatch({
@@ -49,3 +49,13 @@ export function fetchMovieByTitle(search) {
         }
     }
 }
+
+// export function prefetchMoviesList(){
+//     return (dispatch, getState) => {
+//         try{
+//             OMDBAPI;
+//         }catch(e){
+//             console.log(e)
+//         };
+//     }
+// }

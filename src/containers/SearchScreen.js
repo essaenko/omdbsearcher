@@ -4,6 +4,7 @@ import "../assets/SearchScreen.css";
 import SearchComponent from "../components/SearchComponent";
 import * as moviesActions from "../store/searchForm/actions";
 import * as moviesSelectors from "../store/searchForm/reducer";
+import {withRouter} from "react-router-dom"
 
 class SearchScreen extends Component{
     render(){
@@ -32,4 +33,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(SearchScreen);
+export default withRouter(connect(mapStateToProps)(SearchScreen));

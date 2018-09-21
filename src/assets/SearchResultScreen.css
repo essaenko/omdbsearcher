@@ -23,6 +23,7 @@
 
 .movie__title{
     /* margin-left: 20px; */
+    text-transform: capitalize;
 }
 
 .movie__data{

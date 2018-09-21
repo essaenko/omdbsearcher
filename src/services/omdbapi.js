@@ -11,7 +11,10 @@ export default class API {
             payload = "i=" + query;
         }
         if(type === "search"){
-            payload = "t=" + query;
+            payload = "s=" + query;
+        }
+        if(type === 'prefetch'){
+            payload = "s=" + query;
         }
         return this.apiUrl + '?apikey=' + this.apiKey + '&' + payload + "&plot=full";
     }
@@ -20,5 +23,8 @@ export default class API {
     }
     getMovieByTitle(title){
         return axios.get(this.getEndpoint('search', title));
+    }
+    prefetchMovies(){
+        return axios.get(this.getEndpoint("prefetch"));
     }
 }

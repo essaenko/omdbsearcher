@@ -1,15 +1,14 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom"
 
 class SearchComponent extends Component{
-    // constructor(props){
-    //     super(props);
-    // }
     render(){
         return (
             <div>
                 {this.props.isMovieFinded ? (
                     <div className="movie">
                         <h2>What we finded</h2>
+                        <Link to="/">Go back</Link>
                         <div className="movie__header">
                             <img src={this.props.movie.Poster} className="movie__poster" alt="Movie poster" />
                             <div className="movie__data">
@@ -36,7 +35,6 @@ class SearchComponent extends Component{
                         {this.props.fetchMovieError}
                     </h2>
                 )}
-
             </div>
         );
     }

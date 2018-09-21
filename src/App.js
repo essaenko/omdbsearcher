@@ -5,8 +5,11 @@ import SearchScreen from "./containers/SearchScreen";
 import SearchResultScreen from "./containers/SearchResultScreen";
 import { connect } from "react-redux";
 import * as movieActions from "./store/movie/actions";
+import { Route, withRouter } from "react-router-dom";
+import MoviesList from "./containers/MoviesListScreen";
 
 import * as searchFormSelectors from "./store/searchForm/reducer";
+
 
 class App extends Component {
   render() {
@@ -15,10 +18,17 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">OMDB Searcher on ReactJS <img src={logo} className="App-logo" alt="logo" /></h1>
         </header>
-        <SearchScreen fetchMovie={() => {
-          this.fetchMovie();
-        }}></SearchScreen>
-        <SearchResultScreen></SearchResultScreen>
+        <Route exact path="/" render={() => {
+          return (
+            <div>
+              <SearchScreen fetchMovie={() => { 
+                this.fetchMovie();
+              }} />
+              <MoviesList />
+            </div>  
+          )
+        }} />
+        <Route exact path="/movie/:imdbID" component={SearchResultScreen} />
       </div>
     );
   }
@@ -38,4 +48,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps)(App));
