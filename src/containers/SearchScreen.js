@@ -14,7 +14,8 @@ class SearchScreen extends Component{
                 onSearchInput={(searchPhrase) => {
                     this.setSearchPhrase(searchPhrase);
                 }}
-                onSearchStart={() => {
+                onSearchStart={(e) => {
+                    e.preventDefault();
                     this.props.fetchMovie()
                 }}
                 ></SearchComponent>
