@@ -6,7 +6,7 @@ import SearchResultScreen from "./containers/SearchResultScreen";
 import { connect } from "react-redux";
 import * as movieActions from "./store/movie/actions";
 
-import * as moviesSelectors from "./store/searchForm/reducer";
+import * as searchFormSelectors from "./store/searchForm/reducer";
 
 class App extends Component {
   render() {
@@ -34,7 +34,7 @@ class App extends Component {
 
 function mapStateToProps(state){
   return {
-    SearchPhrase: moviesSelectors.getSearchPhrase(state)
+    SearchPhrase: searchFormSelectors.getSearchPhrase(state)
   }
 }
 

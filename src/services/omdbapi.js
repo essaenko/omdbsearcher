@@ -1,8 +1,9 @@
 import axios from "axios";
+import {credintails} from "./credintails";
 export default class API {
     constructor(){
-        this.apiKey = "b9802b79";
-        this.apiUrl = "http://www.omdbapi.com/";
+        this.apiKey = credintails.apiKey;
+        this.apiUrl = credintails.apiUrl;
     }
     getEndpoint(type, query){
         let payload = "";
