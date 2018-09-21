@@ -6,9 +6,9 @@ class SearchComponent extends Component{
     // }
     render(){
         return (
-            <form>
+            <form onSubmit={(event) => this.props.onSearchStart(event)}>
                 <input type="text" onInput={(event) => this.props.onSearchInput(event.target.value)} />
-                <button type="button" onClick={(event) => this.props.onSearchStart()}>Search</button>
+                <button type="submit">Search</button>
             </form>
         );
     }
