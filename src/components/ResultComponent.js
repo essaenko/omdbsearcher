@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom"
+import {Button} from "@material-ui/core"
 
 class SearchComponent extends Component{
     render(){
@@ -8,7 +9,11 @@ class SearchComponent extends Component{
                 {this.props.isMovieFinded ? (
                     <div className="movie">
                         <h2>What we finded</h2>
-                        <Link to="/">Go back</Link>
+                        <Link to="/" style={{textDecoration: "none"}}>
+                            <Button variant="outlined" color="primary">
+                                Go back
+                            </Button>
+                        </Link>
                         <div className="movie__header">
                             <img src={this.props.movie.Poster} className="movie__poster" alt="Movie poster" />
                             <div className="movie__data">

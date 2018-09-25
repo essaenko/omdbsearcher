@@ -24,8 +24,17 @@ class App extends Component {
               <SearchScreen fetchMovie={() => { 
                 this.fetchMovie();
               }} />
-              <MoviesList />
             </div>  
+          )
+        }} />
+        <Route exact path="/search/:page" render={ () => {
+          return (
+            <div>
+              <SearchScreen fetchMovie={() => { 
+                this.fetchMovie();
+              }} />
+              <MoviesList />
+            </div>
           )
         }} />
         <Route exact path="/movie/:imdbID" component={SearchResultScreen} />

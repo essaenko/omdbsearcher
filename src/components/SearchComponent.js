@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {TextField, Button, FormControl} from "@material-ui/core"
 
 class SearchComponent extends Component{
     // constructor(props){
@@ -7,8 +8,22 @@ class SearchComponent extends Component{
     render(){
         return (
             <form onSubmit={(event) => this.props.onSearchStart(event)}>
-                <input type="text" onInput={(event) => this.props.onSearchInput(event.target.value)} />
-                <button type="submit">Search</button>
+                <FormControl>
+                    <TextField
+                        id="outlined-name"
+                        label="Movie title"
+                        // value={this.state.name}
+                        onChange={(event) => this.props.onSearchInput(event.target.value)}
+                        margin="normal"
+                        variant="outlined"
+                        fullWidth={false}
+                    />
+                    {/* <input type="text" onInput={(event) => this.props.onSearchInput(event.target.value)} /> */}
+                    {/* <button type="submit">Search</button> */}
+                    <Button variant="outlined" color="primary" type="submit">
+                        Search
+                    </Button>
+                </FormControl>
             </form>
         );
     }

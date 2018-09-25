@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
+import { Button } from "@material-ui/core"
 
 export class MoviesListComponent extends Component{
     render(){
@@ -29,7 +30,11 @@ export class MoviesListComponent extends Component{
                                 <b>Released:</b> {element.Year}
                             </p>
                             <p>
-                                <Link to={"/movie/" + element.imdbID}>More...</Link>
+                                <Link to={"/movie/" + element.imdbID} style={{textDecoration: "none"}}>
+                                    <Button variant="outlined" color="primary">
+                                        More...
+                                    </Button>
+                                </Link>
                             </p>
                         </div>
                     </div>
