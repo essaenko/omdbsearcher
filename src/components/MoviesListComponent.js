@@ -6,7 +6,17 @@ export class MoviesListComponent extends Component{
     render(){
         return (
             <div>
-                {this.props.moviesList.length ? this.prepareMoviesList(this.props.moviesList): (
+                {this.props.moviesList.length ? (
+                    <div>
+                        {this.prepareMoviesList(this.props.moviesList)}
+
+                            <Link to={"/search/" + Number(this.props.searchPage) + 1} style={{textDecoration: "none"}}>
+                                <Button variant="contained" color="primary">
+                                    Next
+                                </Button>
+                            </Link>
+                    </div>
+                ): (
                     <h2>Input movie title</h2>
                 )}
             </div>
