@@ -5,7 +5,7 @@ export default class API {
         this.apiKey = credintails.apiKey;
         this.apiUrl = credintails.apiUrl;
     }
-    getEndpoint(type, query){
+    getEndpoint(type, query, page = 1){
         let payload = "";
         if(type === 'id'){
             payload = "i=" + query;
@@ -16,7 +16,7 @@ export default class API {
         if(type === 'prefetch'){
             payload = "s=" + query;
         }
-        return this.apiUrl + '?apikey=' + this.apiKey + '&' + payload + "&plot=full";
+        return this.apiUrl + '?apikey=' + this.apiKey + '&' + payload + "&plot=full&page=" + page;
     }
     getMovieById(id){
         return axios.get(this.getEndpoint('id', id));
@@ -26,5 +26,8 @@ export default class API {
     }
     prefetchMovies(){
         return axios.get(this.getEndpoint("prefetch"));
+    }
+    fetchNextPage({SearchText, SearchPage}){
+        return axios.get(this.getEndpoint('search', SearchText, SearchPage));
     }
 }

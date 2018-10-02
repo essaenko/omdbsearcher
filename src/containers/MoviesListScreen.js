@@ -19,22 +19,16 @@ class MoviesListScreen extends Component{
     }
     render(){
         return (
-            <MoviesListComponent moviesList = {this.props.movies_list} searchPage={this.props.searchPage} nextSearchPage={() => {this.nextSearchPage()}}></MoviesListComponent>
+            <MoviesListComponent moviesList = {this.props.movies_list} searchPage={this.props.searchPage} nextSearchPage={() => {this.nextSearchPage()}} prevousSearchPage={() => {this.prevousSearchPage()}}/>
         );
-    }
-    componentDidMount(){
-        if(this.props.SearchPhrase.length > 1){
-            let search = this.props.SearchPhrase;
-            if(!isNaN(+search)){
-                this.props.dispatch(movieActions.fetchMovieById(search));
-            }else if (typeof search === "string"){
-                this.props.dispatch(movieActions.fetchMovieByTitle(search));
-            }
-        }
-        this.props.dispatch(moviesActions.setSearchPage(+this.props.match.params.page));
     }
     nextSearchPage(){
         this.props.dispatch(moviesActions.setSearchPage(+this.props.match.params.page + 1));
+        this.props.dispatch(movieActions.fetchNextPage());
+    }
+    prevousSearchPage(){
+        this.props.dispatch(moviesActions.setSearchPage(+this.props.match.params.page - 1));
+        this.props.dispatch(movieActions.fetchNextPage());
     }
 }
 

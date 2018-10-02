@@ -49,3 +49,27 @@ export function fetchMovieByTitle(search) {
         }
     }
 }
+
+export function fetchNextPage(){
+    return (dispatch, getState) => {
+        try{
+            OMDBAPI.fetchNextPage(getState().movies).then(response => {
+                if(response.data.Response === "True"){
+                    dispatch({
+                        type: types.FETCH_MOVIE_LIST,
+                        moviesList:response.data.Search
+                    });
+                }else{
+                    dispatch({
+                        type: types.MOVIE_NOT_FOUND,
+                        error:response.data.Error
+                    });
+                }
+            }).catch(e => {
+                console.log(e);
+            })
+        }catch(e){
+            console.log(e);
+        }
+    }
+}

@@ -2,3 +2,4 @@ export const FETCH_MOVIE = "FETCH_MOVIE";
 export const FETCH_MOVIE_LIST = "FETCH_MOVIE_LIST";
 export const MOVIE_NOT_FOUND = "MOVIE_NOT_FOUND";
 export const SERVER_ERROR = "SERVER_ERROR";
+export const FETCH_NEXT_PAGE = "FETCH_NEXT_PAGE";

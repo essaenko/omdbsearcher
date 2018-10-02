@@ -5,7 +5,6 @@ import SearchComponent from "../components/SearchComponent";
 import * as moviesActions from "../store/searchForm/actions";
 import * as moviesSelectors from "../store/searchForm/reducer";
 import {withRouter} from "react-router-dom"
-import SearchResultScreen from "./SearchResultScreen";
 import * as movieActions from "../store/movie/actions";
 
 class SearchScreen extends Component{
@@ -23,7 +22,7 @@ class SearchScreen extends Component{
                 searchPhrase={this.props.SearchText}
                 isSearchPage={!!this.props.match.params.page && Number(this.props.match.params.page) < 2}
                 onSearchStart={() => {
-                    if(!!!this.props.match.params.page && Number(this.props.match.params.page) < 2){
+                    if(!(!!this.props.match.params.page && Number(this.props.match.params.page) < 2)){
                         this.props.history.push('/search/1');
                     }
                     let search = this.props.SearchText;

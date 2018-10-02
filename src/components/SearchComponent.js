@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import {TextField, Button, FormControl} from "@material-ui/core"
-import {withRouter} from "react-router-dom";
 
 class SearchComponent extends Component{
     constructor(props){

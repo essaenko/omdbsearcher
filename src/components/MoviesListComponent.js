@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
 import { Button, CircularProgress } from "@material-ui/core"
-import * as moviesActions from "../store/searchForm/actions";
 
 export class MoviesListComponent extends Component{
     render(){
@@ -16,12 +15,19 @@ export class MoviesListComponent extends Component{
                         </Link> */}
 
                         {this.prepareMoviesList(this.props.moviesList)}
-
-                        <Link to={"/search/" + (+this.props.searchPage + 1) } style={{textDecoration: "none"}}>
-                            <Button variant="contained" color="primary" onClick={this.props.nextSearchPage}>
-                                Next
-                            </Button>
-                        </Link>
+                        <div className="movies-list__controls">
+                            {+this.props.searchPage > 1? (
+                            <Link to={"/search/" + (+this.props.searchPage - 1) } style={{textDecoration: "none"}}>
+                                <Button variant="contained" color="primary" onClick={this.props.prevousSearchPage}>
+                                    Prevous
+                                </Button>
+                            </Link>) : ("")}
+                            <Link to={"/search/" + (+this.props.searchPage + 1) } style={{textDecoration: "none"}}>
+                                <Button variant="contained" color="primary" onClick={this.props.nextSearchPage}>
+                                    Next
+                                </Button>
+                            </Link>
+                        </div>
                     </div>
                 ): (
                     <CircularProgress />

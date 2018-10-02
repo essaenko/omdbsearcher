@@ -4,7 +4,6 @@ import './App.css';
 import SearchScreen from "./containers/SearchScreen";
 import SearchResultScreen from "./containers/SearchResultScreen";
 import { connect } from "react-redux";
-import * as movieActions from "./store/movie/actions";
 import { Route, withRouter } from "react-router-dom";
 import MoviesList from "./containers/MoviesListScreen";
 
@@ -12,9 +11,6 @@ import * as searchFormSelectors from "./store/searchForm/reducer";
 
 
 class App extends Component {
-  constructor(props){
-    super(props)
-  }
   render() {
     return (
       <div className="App">
