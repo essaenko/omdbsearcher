@@ -8,3 +8,12 @@ export function setSearchPhrase(searchPhrase){
         });
     }
 }
+
+export function setSearchPage(page){
+    return (dispatch, getState) => {
+        dispatch({
+            type: types.SET_SEARCH_PAGE,
+            searchPage: page
+        });
+    }
+}

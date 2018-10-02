@@ -49,13 +49,3 @@ export function fetchMovieByTitle(search) {
         }
     }
 }
-
-// export function prefetchMoviesList(){
-//     return (dispatch, getState) => {
-//         try{
-//             OMDBAPI;
-//         }catch(e){
-//             console.log(e)
-//         };
-//     }
-// }

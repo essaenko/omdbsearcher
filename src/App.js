@@ -12,6 +12,9 @@ import * as searchFormSelectors from "./store/searchForm/reducer";
 
 
 class App extends Component {
+  constructor(props){
+    super(props)
+  }
   render() {
     return (
       <div className="App">
@@ -21,33 +24,21 @@ class App extends Component {
         <Route exact path="/" render={() => {
           return (
             <div>
-              <SearchScreen fetchMovie={() => { 
-                this.fetchMovie();
-              }} />
+              <SearchScreen />
             </div>  
           )
         }} />
         <Route exact path="/search/:page" render={ () => {
           return (
             <div>
-              <SearchScreen fetchMovie={() => { 
-                this.fetchMovie();
-              }} />
-              <MoviesList />
+              <SearchScreen />
+              <MoviesList SearchPhrase={this.props.SearchPhrase}/>
             </div>
           )
         }} />
         <Route exact path="/movie/:imdbID" component={SearchResultScreen} />
       </div>
     );
-  }
-  fetchMovie(){
-    let search = this.props.SearchPhrase
-    if(!isNaN(+search)){
-      this.props.dispatch(movieActions.fetchMovieById(search));
-    }else if (typeof search === "string"){
-      this.props.dispatch(movieActions.fetchMovieByTitle(search));
-    }
   }
 }
 

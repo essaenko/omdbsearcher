@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {TextField, Button, FormControl} from "@material-ui/core"
-import {Redirect} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 class SearchComponent extends Component{
     constructor(props){
@@ -11,10 +11,7 @@ class SearchComponent extends Component{
         }
     }
     render(){
-        return (
-            this.state.submited && !this.props.isSearchPage ? (
-                <Redirect to="/search/1" /> ) : (
-                <form onSubmit={(event) => {
+        return (<form onSubmit={(event) => {
                     event.preventDefault();
                     this.setState({...this.state, submited:true})
                     this.props.onSearchStart()
@@ -34,9 +31,7 @@ class SearchComponent extends Component{
                             Search
                         </Button>
                     </FormControl>
-                </form>
-            )
-        );
+                </form>);
     }
 } 
 

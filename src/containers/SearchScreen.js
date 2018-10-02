@@ -6,11 +6,11 @@ import * as moviesActions from "../store/searchForm/actions";
 import * as moviesSelectors from "../store/searchForm/reducer";
 import {withRouter} from "react-router-dom"
 import SearchResultScreen from "./SearchResultScreen";
+import * as movieActions from "../store/movie/actions";
 
 class SearchScreen extends Component{
     constructor({props, match}){
         super(props)
-        this.match = match;
     }
     render(){
         return (
@@ -21,9 +21,17 @@ class SearchScreen extends Component{
                     this.setSearchPhrase(searchPhrase);
                 }}
                 searchPhrase={this.props.SearchText}
-                isSearchPage={!!this.match.params.page && Number(this.match.params.page) < 2}
+                isSearchPage={!!this.props.match.params.page && Number(this.props.match.params.page) < 2}
                 onSearchStart={() => {
-                    this.props.fetchMovie()
+                    if(!!!this.props.match.params.page && Number(this.props.match.params.page) < 2){
+                        this.props.history.push('/search/1');
+                    }
+                    let search = this.props.SearchText;
+                    if(!isNaN(+search)){
+                        this.props.dispatch(movieActions.fetchMovieById(this.props.SearchText));
+                    }else if (typeof search === "string"){
+                        this.props.dispatch(movieActions.fetchMovieByTitle(search));
+                    }
                 }}
                 ></SearchComponent>
             </div>

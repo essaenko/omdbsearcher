@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
-import { Button } from "@material-ui/core"
+import { Button, CircularProgress } from "@material-ui/core"
+import * as moviesActions from "../store/searchForm/actions";
 
 export class MoviesListComponent extends Component{
     render(){
@@ -8,16 +9,22 @@ export class MoviesListComponent extends Component{
             <div>
                 {this.props.moviesList.length ? (
                     <div>
+                        {/* <Link to={"/"} style={{textDecoration: "none"}}>
+                            <Button variant="contained" color="primary">
+                                Back to search
+                            </Button>
+                        </Link> */}
+
                         {this.prepareMoviesList(this.props.moviesList)}
 
-                            <Link to={"/search/" + Number(this.props.searchPage) + 1} style={{textDecoration: "none"}}>
-                                <Button variant="contained" color="primary">
-                                    Next
-                                </Button>
-                            </Link>
+                        <Link to={"/search/" + (+this.props.searchPage + 1) } style={{textDecoration: "none"}}>
+                            <Button variant="contained" color="primary" onClick={this.props.nextSearchPage}>
+                                Next
+                            </Button>
+                        </Link>
                     </div>
                 ): (
-                    <h2>Input movie title</h2>
+                    <CircularProgress />
                 )}
             </div>
         );
@@ -28,7 +35,7 @@ export class MoviesListComponent extends Component{
             newMoviesList.push((
                 <div className="movie" key={element.imdbID}>
                     <div className="movie__header">
-                        <img src={element.Poster} className="movie__poster" alt="Movie poster" />
+                        <img src={element.Poster !== "N/A" ? element.Poster : ""} className="movie__poster" alt="Movie poster" />
                         <div className="movie__data">
                             <h2 className="movie__title">
                                 {element.Title}
